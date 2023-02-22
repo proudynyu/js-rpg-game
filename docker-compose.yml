@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  app:
+    build: .
+    container_name: canvas
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/www
+    environment:
+      - NODE_ENV="development"
