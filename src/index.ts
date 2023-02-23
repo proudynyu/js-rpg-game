@@ -9,13 +9,6 @@ function main() {
   const game = new Game(config, ctx, canvas);
 
   game.init();
-
-  console.log("starting looping...");
-  while (game.isActive) {
-    game.handleEvents();
-    game.update();
-    game.render();
-  }
 }
 
 main();

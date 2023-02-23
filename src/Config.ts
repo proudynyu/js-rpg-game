@@ -4,37 +4,37 @@ const PIXEL_SIZE = 32;
 
 export class Config {
   constructor(
-    private screenTitle: string,
-    private screenWidth: number = BASE_WIDTH,
-    private screenHeight: number = BASE_HEIGHT,
-    private pixelSize: number = PIXEL_SIZE
+    private _screenTitle: string,
+    private _screenWidth: number = BASE_WIDTH,
+    private _screenHeight: number = BASE_HEIGHT,
+    private _pixelSize: number = PIXEL_SIZE
   ) {}
 
-  get title() {
-    return this.screenTitle;
+  get screenTitle() {
+    return this._screenTitle;
   }
 
-  get width() {
-    return this.screenWidth;
+  get screenWidth() {
+    return this._screenWidth;
   }
 
-  get height() {
-    return this.screenHeight;
+  get screenHeight() {
+    return this._screenHeight;
   }
 
-  get pSize() {
-    return this.pixelSize;
+  get pixelSize() {
+    return this._pixelSize;
   }
 
-  set width(w: number) {
-    this.screenWidth = w;
+  set screenWidth(w: number) {
+    this._screenWidth = w;
   }
 
-  set height(h: number) {
-    this.screenHeight = h;
+  set screenHeight(h: number) {
+    this._screenHeight = h;
   }
 
-  set pixel(p: number) {
-    this.pixelSize = p;
+  set pixelSize(p: number) {
+    this._pixelSize = p;
   }
 }

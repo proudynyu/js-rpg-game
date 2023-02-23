@@ -9,24 +9,37 @@ export class Game {
     private canvas: HTMLCanvasElement
   ) {}
 
-  public get isActive() {
+  get isActive() {
     return this.active;
   }
 
-  public set handleActive(running: boolean) {
+  set handleActive(running: boolean) {
     this.active = running;
   }
 
-  public handleEvents() {}
+  private handleEvents() {
+    // if i want to pause the game, i could use this function
+    // like `if press "space" handleActive(isActive!)`
+  }
 
-  public update() {}
+  private update() {}
 
-  public render() {}
+  private render() {
+    if (this.active) {
+      this.update();
+      requestAnimationFrame(() => {
+        this.render();
+      });
+    }
+  }
 
   public init() {
-    console.log("game initializing...");
-    this.canvas.width = this.config.width;
-    this.canvas.height = this.config.height;
+    console.debug("game initializing...");
+    this.canvas.width = this.config.screenWidth;
+    this.canvas.height = this.config.screenHeight;
     this.active = true;
+
+    console.debug("starting looping...");
+    this.render();
   }
 }
