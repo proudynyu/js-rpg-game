@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "NODE_ENV=production webpack",
-    "dev": "webpack serve"
+    "dev": "NODE_ENV=development webpack serve"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
