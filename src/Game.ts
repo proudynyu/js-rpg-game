@@ -1,3 +1,4 @@
+import { Sprite } from "./Components/Sprite";
 import { Config } from "./configs/Config";
 import { GameObject } from "./GameObject";
 
@@ -11,7 +12,7 @@ export class Game {
     private canvas: HTMLCanvasElement
   ) {}
 
-  get isActive() {
+  get isActive(): boolean {
     return this.active;
   }
 
@@ -47,13 +48,21 @@ export class Game {
     this.canvas.height = this.config.screenHeight;
     this.active = true;
 
-    const midScreen = {
-      xpos: this.config.screenWidth / 2,
-      ypos: this.config.screenHeight / 2,
+    // refactor this after some more implementations
+    const midScreen: Vector2d = {
+      x: this.config.screenWidth / 2,
+      y: this.config.screenHeight / 2,
     };
 
-    // refactor this after some more implementations
-    const player = new GameObject(midScreen.ypos, midScreen.xpos, this.ctx);
+    const player = new GameObject(
+      midScreen,
+      this.ctx,
+      true,
+      this.config.movementKeys
+    );
+
+    player.addComponent<Sprite>(new Sprite("", this.ctx, player.position));
+
     this.entities.push(player);
     // ---
 
