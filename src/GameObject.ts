@@ -1,5 +1,3 @@
-import { Sprite } from "./Components/Sprite";
-
 export class GameObject {
   private components: any[] = [];
 

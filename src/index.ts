@@ -1,5 +1,5 @@
 import { Game } from "./Game";
-import { Config } from "./configs/Config";
+import { Config } from "./Config";
 
 const canvas = document.querySelector("canvas")!;
 const ctx = canvas.getContext("2d")!;

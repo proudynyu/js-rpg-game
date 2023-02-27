@@ -1,5 +1,5 @@
 import { Sprite } from "./Components/Sprite";
-import { Config } from "./configs/Config";
+import { Config } from "./Config";
 import { GameObject } from "./GameObject";
 
 export class Game {
@@ -61,7 +61,7 @@ export class Game {
       this.config.movementKeys
     );
 
-    player.addComponent<Sprite>(new Sprite("", this.ctx, player.position));
+    player.addComponent<Sprite>(new Sprite("/assets/human_female.png", this.ctx, player.position));
 
     this.entities.push(player);
     // ---
