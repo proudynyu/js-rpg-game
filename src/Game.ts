@@ -1,4 +1,3 @@
-import { Sprite } from "./Components/Sprite";
 import { Config } from "./Config";
 import { GameObject } from "./GameObject";
 
@@ -32,6 +31,8 @@ export class Game {
   }
 
   private render(): void {
+    this.ctx.clearRect(0,0,this.config.screenWidth, this.config.screenHeight)
+    
     this.handleEvents();
 
     if (this.active) {
@@ -61,7 +62,7 @@ export class Game {
       this.config.movementKeys
     );
 
-    player.addComponent<Sprite>(new Sprite("/assets/human_female.png", this.ctx, player.position));
+    // player.addComponent<Sprite>(new Sprite("/assets/human_female.png", this.ctx, player.position));
 
     this.entities.push(player);
     // ---

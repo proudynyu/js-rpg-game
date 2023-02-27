@@ -6,8 +6,10 @@ const ctx = canvas.getContext("2d")!;
 
 function main() {
   const config = new Config("js-game");
-  const game = new Game(config, ctx, canvas);
+  config.movementEvents()
   
+  const game = new Game(config, ctx, canvas);
+
   game.init();
 }
 
