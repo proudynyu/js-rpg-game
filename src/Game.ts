@@ -3,7 +3,7 @@ import { GameObject } from "./GameObject";
 
 export class Game {
   private active: boolean = false;
-  private entities: GameObject[] = [];
+  private gameObjects: GameObject[] = []
 
   constructor(
     private config: Config,
@@ -25,9 +25,6 @@ export class Game {
   }
 
   private update(): void {
-    this.entities.forEach((entity) => {
-      entity.update();
-    });
   }
 
   private render(): void {
@@ -47,27 +44,22 @@ export class Game {
     console.debug("game initializing...");
     this.canvas.width = this.config.screenWidth;
     this.canvas.height = this.config.screenHeight;
+
+    this.gameObjects.forEach(gameObject => {
+      gameObject.init()
+    })
+    
     this.active = true;
-
-    // refactor this after some more implementations
-    const midScreen: Vector2d = {
-      x: this.config.screenWidth / 2,
-      y: this.config.screenHeight / 2,
-    };
-
-    const player = new GameObject(
-      midScreen,
-      this.ctx,
-      true,
-      this.config.movementKeys
-    );
-
-    // player.addComponent<Sprite>(new Sprite("/assets/human_female.png", this.ctx, player.position));
-
-    this.entities.push(player);
-    // ---
-
     console.debug("starting looping...");
     this.render();
+  }
+
+  public addNewGameObject(gameObject: GameObject) {
+    if (!this.active) {
+      this.gameObjects.push(gameObject)
+    } else {
+      this.gameObjects.push(gameObject)
+      gameObject.init()
+    }
   }
 }
