@@ -9,7 +9,7 @@ export class Game {
     private config: Config,
     private ctx: CanvasRenderingContext2D,
     private canvas: HTMLCanvasElement
-  ) {}
+  ) { }
 
   get isActive(): boolean {
     return this.active;
@@ -25,11 +25,14 @@ export class Game {
   }
 
   private update(): void {
+    this.gameObjects.forEach(gameObject => {
+      gameObject.OnUpdate();
+    })
   }
 
   private render(): void {
-    this.ctx.clearRect(0,0,this.config.screenWidth, this.config.screenHeight)
-    
+    this.ctx.clearRect(0, 0, this.config.screenWidth, this.config.screenHeight)
+
     this.handleEvents();
 
     if (this.active) {
@@ -46,9 +49,9 @@ export class Game {
     this.canvas.height = this.config.screenHeight;
 
     this.gameObjects.forEach(gameObject => {
-      gameObject.init()
+      gameObject.OnStart()
     })
-    
+
     this.active = true;
     console.debug("starting looping...");
     this.render();
@@ -59,7 +62,7 @@ export class Game {
       this.gameObjects.push(gameObject)
     } else {
       this.gameObjects.push(gameObject)
-      gameObject.init()
+      gameObject.OnStart()
     }
   }
 }

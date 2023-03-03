@@ -11,6 +11,11 @@
     "moduleResolution": "node",
     "allowJs": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components": ["./src/Components/index"],
+      "@entities": ["./src/entities/index"]
+    }
   }
 }
