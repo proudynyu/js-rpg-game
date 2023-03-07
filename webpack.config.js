@@ -5,7 +5,6 @@ const env = process.env.NODE_ENV;
 module.exports = {
   mode: `${env === "production" ? "production" : "development"}`,
   entry: "./src/index.ts",
-  target: "electron-main",
   devtool: "inline-source-map",
   devServer: {
     static: "./build",

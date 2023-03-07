@@ -1,14 +1,13 @@
 export class Sprite implements Component {
-  private _image: HTMLImageElement;
-  private ctx: CanvasRenderingContext2D,
-
+  private _image: HTMLImageElement | null = null;
+  private ctx: CanvasRenderingContext2D;
+  
   constructor(
     private imageSrc: string,
     private position: Vector2d,
     private height?: number,
     private width?: number
   ) {
-    this._image = {} as HTMLImageElement
     this.ctx = window.context
   }
 
@@ -22,6 +21,7 @@ export class Sprite implements Component {
   }
 
   public update() {
-    this.ctx.drawImage(this._image!, this.position.x, this.position.y)
+    if (this._image)
+      this.ctx.drawImage(this._image, this.position.x, this.position.y)
   }
 }
