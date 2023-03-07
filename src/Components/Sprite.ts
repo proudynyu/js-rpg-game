@@ -1,14 +1,15 @@
 export class Sprite implements Component {
   private _image: HTMLImageElement;
+  private ctx: CanvasRenderingContext2D,
 
   constructor(
     private imageSrc: string,
-    private ctx: CanvasRenderingContext2D,
     private position: Vector2d,
     private height?: number,
     private width?: number
   ) {
     this._image = {} as HTMLImageElement
+    this.ctx = window.context
   }
 
   public init(): void {

@@ -14,8 +14,7 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "@components": ["./src/Components/index"],
-      "@entities": ["./src/entities/index"]
+      "*": ["types/*.d.ts"]
     }
   }
 }

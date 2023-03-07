@@ -1,13 +1,15 @@
 import { GameObject } from "../GameObject";
-import { Sprite } from '@components'
+import { Sprite } from '../Components'
 
 export class Player extends GameObject {
+  private ctx: CanvasRenderingContext2D
+  
   constructor(
-    private ctx: CanvasRenderingContext2D,
     private _position: Vector2d,
     private _keys: MovementKeys
   ) {
     super()
+    this.ctx = window.context
   }
 
   public OnStart() {

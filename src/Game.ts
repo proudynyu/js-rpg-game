@@ -3,13 +3,15 @@ import { GameObject } from "./GameObject";
 
 export class Game {
   private active: boolean = false;
-  private gameObjects: GameObject[] = []
+  private gameObjects: GameObject[] = [];
+  private ctx: CanvasRenderingContext2D
 
   constructor(
     private config: Config,
-    private ctx: CanvasRenderingContext2D,
     private canvas: HTMLCanvasElement
-  ) { }
+  ) {
+    this.ctx = window.context
+  }
 
   get isActive(): boolean {
     return this.active;
@@ -25,13 +27,13 @@ export class Game {
   }
 
   private update(): void {
-    this.gameObjects.forEach(gameObject => {
+    this.gameObjects.forEach((gameObject) => {
       gameObject.OnUpdate();
-    })
+    });
   }
 
   private render(): void {
-    this.ctx.clearRect(0, 0, this.config.screenWidth, this.config.screenHeight)
+    this.ctx.clearRect(0, 0, this.config.screenWidth, this.config.screenHeight);
 
     this.handleEvents();
 
@@ -48,9 +50,9 @@ export class Game {
     this.canvas.width = this.config.screenWidth;
     this.canvas.height = this.config.screenHeight;
 
-    this.gameObjects.forEach(gameObject => {
-      gameObject.OnStart()
-    })
+    this.gameObjects.forEach((gameObject) => {
+      gameObject.OnStart();
+    });
 
     this.active = true;
     console.debug("starting looping...");
@@ -59,10 +61,10 @@ export class Game {
 
   public addNewGameObject(gameObject: GameObject) {
     if (!this.active) {
-      this.gameObjects.push(gameObject)
+      this.gameObjects.push(gameObject);
     } else {
-      this.gameObjects.push(gameObject)
-      gameObject.OnStart()
+      this.gameObjects.push(gameObject);
+      gameObject.OnStart();
     }
   }
 }
