@@ -1,7 +1,5 @@
-import { app, BrowserWindow } from "electron";
-
 import { Game } from "./Game";
-import { BASE_HEIGHT, BASE_WIDTH, Config } from "./Config";
+import {  Config } from "./Config";
 import { keyboardEvents } from "./Events";
 
 const canvas = document.querySelector("canvas")!;
@@ -18,25 +16,4 @@ function main() {
   game.init();
 }
 
-// implemeting electron [ NOT READY YET ]
-const createWindow = () => {
-  const win = new BrowserWindow({
-    width: BASE_WIDTH,
-    height: BASE_HEIGHT,
-    webPreferences: {
-      nodeIntegration: true
-    }
-  });
-
-  win.loadFile("index.html");
-
-  main();
-};
-
-app.whenReady().then(() => {
-  createWindow();
-
-  app.on("window-all-closed", () => {
-    if (process.platform !== "darwin") app.quit();
-  });
-});
+main()
