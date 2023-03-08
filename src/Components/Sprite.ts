@@ -1,5 +1,7 @@
-export class Sprite implements Component {
-  private _image: HTMLImageElement | null = null;
+import { Component } from ".";
+
+export class Sprite extends Component {
+  private _image: HTMLImageElement;
   private ctx: CanvasRenderingContext2D;
   
   constructor(
@@ -7,21 +9,23 @@ export class Sprite implements Component {
     private position: Vector2d,
     private height?: number,
     private width?: number
-  ) {
-    this.ctx = window.context
+    ) {
+      super();
+
+      this.ctx = window.context
+      const image = new Image(this.width, this.height);
+      image.src = this.imageSrc;
+      this._image = image
   }
 
   public init(): void {
-    const image = new Image(this.width, this.height);
-    image.src = this.imageSrc;
-
-    image.onload = () => {
-      this._image = image
+    console.log({pos: this.position})
+    this._image.onload = () => {
+      this.ctx.drawImage(this._image, this.position.x, this.position.y)
     };
   }
 
   public update() {
-    if (this._image)
-      this.ctx.drawImage(this._image, this.position.x, this.position.y)
+    this.ctx.drawImage(this._image, this.position.x, this.position.y)
   }
 }

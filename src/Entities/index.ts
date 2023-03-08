@@ -10,10 +10,15 @@ export class Entities {
 
   public create() {
     const player = new Player(
+      keyboardEvents.movementKeys,
       { x: 0, y: 0 },
-      keyboardEvents.movementKeys
     )
-    const sprite = new Sprite('build/assets/human_female.png', window.context, this._position, 32, 32)
+    
+    const sprite = new Sprite(
+      './assets/human_female.png',
+      player.position,
+      32, 32
+    )
     player.addComponent<Sprite>(sprite)
 
     this._entities.push(player)

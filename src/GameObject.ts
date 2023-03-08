@@ -1,8 +1,9 @@
-export function getComponentId() {}
-export function getComponentTypeId() {}
+import { Component } from './Components'
 
 export abstract class GameObject {
   public components: Component[] = [];
+
+  constructor(private _position: Vector2d) {}
 
   public getComponent<T extends Component>(component: T): T | undefined {
     for (const ClassComponent of this.components) {
@@ -14,6 +15,7 @@ export abstract class GameObject {
   }
 
   public addComponent<T extends Component>(component: T): void {
+    component.gameObject = this
     this.components.push(component);
   }
 
@@ -25,7 +27,10 @@ export abstract class GameObject {
     }
   }
 
+  get position(): Vector2d {
+    return this._position;
+  }
+
   abstract OnStart(): void;
   abstract OnUpdate(): void;
-  abstract Log(): void;
 }

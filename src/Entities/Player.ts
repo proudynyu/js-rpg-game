@@ -1,38 +1,23 @@
 import { GameObject } from "../GameObject";
-import { Sprite } from '../Components'
 
 export class Player extends GameObject {
-  private ctx: CanvasRenderingContext2D
-  
   constructor(
-    private _position: Vector2d,
-    private _keys: MovementKeys
+    private _keys: MovementKeys,
+    position: Vector2d = { x: 0, y: 0 }
   ) {
-    super()
-    this.ctx = window.context
+    super(position);
   }
 
   public OnStart() {
-    this.components.forEach(component => component.init())
-  };
-
-  get position(): Vector2d {
-    return this._position;
+    this.components.forEach((component) => component.init());
   }
 
   public OnUpdate() {
-    this.ctx.fillStyle = "#fff"
-    this.ctx.fillRect(this._position.x, this._position.y, 32, 32)
+    this.components.forEach((component) => component.update());
 
-    if (this._keys?.a.pressed) this._position.x += -16;
-    else if (this._keys?.d.pressed) this._position.x += 16;
-    else if (this._keys?.s.pressed) this._position.y += 16;
-    else if (this._keys?.w.pressed) this._position.y += -16;
-
-    this.components.forEach(component => component.update())
-  };
-
-  public Log() {
-    console.log('Initializing Player...')
+    if (this._keys?.a.pressed) this.position.x += -16;
+    else if (this._keys?.d.pressed) this.position.x += 16;
+    else if (this._keys?.s.pressed) this.position.y += 16;
+    else if (this._keys?.w.pressed) this.position.y += -16;
   }
 }
