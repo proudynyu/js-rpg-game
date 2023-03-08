@@ -14,7 +14,10 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "*": ["types/*.d.ts"]
+      "@components": ["./src/Components"],
+      "@entities": ["./src/Entities"],
+      "@events": ["./src/Events"],
+      "@utils": ["./src/utils"],
     }
   }
 }

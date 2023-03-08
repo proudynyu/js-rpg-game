@@ -1,9 +1,10 @@
 import { Component } from './Components'
+import { Vector2 } from './utils/Vector';
 
 export abstract class GameObject {
   public components: Component[] = [];
 
-  constructor(private _position: Vector2d) {}
+  constructor(private _position: Vector2) {}
 
   public getComponent<T extends Component>(component: T): T | undefined {
     for (const ClassComponent of this.components) {
@@ -27,7 +28,7 @@ export abstract class GameObject {
     }
   }
 
-  get position(): Vector2d {
+  get position(): Vector2 {
     return this._position;
   }
 
