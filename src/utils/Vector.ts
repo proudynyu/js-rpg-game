@@ -1,3 +1,5 @@
+type Vector2d = { x: number, y: number }
+
 export class Vector2 {
   private vec2: Vector2d;
 

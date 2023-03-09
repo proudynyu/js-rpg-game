@@ -1,26 +1,40 @@
-import { GameObject } from "../GameObject";
-import { Vector2 } from "../../utils/Vector";
+import { GameObject } from "@entities";
+import { Vector2 } from "@utils";
 
 export class Rectangle extends GameObject {
-  private ctx: CanvasRenderingContext2D
+  private ctx: CanvasRenderingContext2D;
 
   constructor(
-    private pos: Vector2,
+    position: Vector2 = new Vector2(0, 0),
     private width: number,
     private heigth: number,
-    private color: string = '#fff'
+    private color: string = "#fff"
   ) {
-    super(pos)
-    this.ctx = window.context
+    super(position);
+    this.ctx = window.context;
   }
 
   public OnStart(): void {
-    this.ctx.fillStyle = this.color
-    this.ctx.fillRect(this.pos.vector2d.x, this.pos.vector2d.y, this.width, this.heigth)
-  } 
+    this.components.forEach((component) => component.init());
+
+    this.ctx.fillStyle = this.color;
+    this.ctx.fillRect(
+      this.position.vector2d.x,
+      this.position.vector2d.y,
+      this.width,
+      this.heigth
+    );
+  }
 
   public OnUpdate(): void {
-    this.ctx.fillStyle = this.color
-    this.ctx.fillRect(this.pos.vector2d.x, this.pos.vector2d.y, this.width, this.heigth)
+    this.components.forEach((component) => component.update());
+
+    this.ctx.fillStyle = this.color;
+    this.ctx.fillRect(
+      this.position.vector2d.x,
+      this.position.vector2d.y,
+      this.width,
+      this.heigth
+    );
   }
 }
