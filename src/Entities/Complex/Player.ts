@@ -1,5 +1,5 @@
 import { Vector2 } from "../../utils/Vector";
-import { GameObject } from "../../GameObject";
+import { GameObject } from "../GameObject";
 
 export class Player extends GameObject {
   constructor(

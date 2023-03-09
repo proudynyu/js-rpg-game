@@ -1,10 +1,14 @@
-import { Component } from './Components'
-import { Vector2 } from './utils/Vector';
+import { Component } from "../Components";
+import { Vector2 } from "../utils/Vector";
 
 export abstract class GameObject {
   public components: Component[] = [];
 
-  constructor(private _position: Vector2) {}
+  constructor(
+    private _position: Vector2,
+    private _speed: number = 2,
+    private _direction: Vector2 = new Vector2(0, 0)
+  ) {}
 
   public getComponent<T extends Component>(component: T): T | undefined {
     for (const ClassComponent of this.components) {
@@ -16,7 +20,7 @@ export abstract class GameObject {
   }
 
   public addComponent<T extends Component>(component: T): void {
-    component.gameObject = this
+    component.gameObject = this;
     this.components.push(component);
   }
 
@@ -30,6 +34,26 @@ export abstract class GameObject {
 
   get position(): Vector2 {
     return this._position;
+  }
+
+  get speed(): number {
+    return this._speed;
+  }
+
+  get direction(): Vector2 {
+    return this._direction;
+  }
+
+  set speed(sp: number) {
+    this._speed = sp;
+  }
+
+  set direction(v: Vector2) {
+    this._direction = v;
+  }
+
+  set position(p: Vector2) {
+    this._position = p;
   }
 
   abstract OnStart(): void;

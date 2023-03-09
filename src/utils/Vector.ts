@@ -1,5 +1,6 @@
 export class Vector2 {
   private vec2: Vector2d;
+
   constructor(x: number, y: number) {
     this.vec2 = { x, y };
   }
@@ -9,8 +10,10 @@ export class Vector2 {
   }
 
   public static vector2DSum(vectorOne: Vector2d, vectorTwo: Vector2d): Vector2 {
-    const x = vectorOne.x + vectorTwo.x;
-    const y = vectorOne.y + vectorTwo.y;
-    return new Vector2(x, y);
+    return new Vector2(vectorOne.x + vectorTwo.x, vectorOne.y + vectorTwo.y);
+  }
+
+  public static vector2DScalarMultiply(vector: Vector2d, scalar: number) {
+    return new Vector2(vector.x * scalar, vector.y * scalar)
   }
 }

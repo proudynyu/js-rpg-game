@@ -1,6 +1,5 @@
 import { Config } from "./Config";
-import { Entities } from "./Entities";
-import { GameObject } from "./GameObject";
+import { GameObject } from "./Entities/GameObject";
 
 export class Game {
   private active: boolean = false;
@@ -50,11 +49,6 @@ export class Game {
     console.debug("game initializing...");
     this.canvas.width = this.config.screenWidth;
     this.canvas.height = this.config.screenHeight;
-
-    const entities = new Entities()
-    entities.create()
-
-    this.gameObjects.push(...entities.entities)
 
     this.gameObjects.forEach((gameObject) => {
       gameObject.OnStart();

@@ -1,4 +1,4 @@
-import { GameObject } from "../../GameObject";
+import { GameObject } from "../GameObject";
 import { Vector2 } from "../../utils/Vector";
 
 export class Rectangle extends GameObject {
