@@ -1,5 +1,5 @@
 import { Vector2 } from "@utils";
-import { GameObject } from "@entities";
+import { GameObject } from "../../GameObject";
 
 export class Player extends GameObject {
   constructor(position: Vector2 = new Vector2(0, 0), speed?: number) {

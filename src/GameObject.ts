@@ -1,5 +1,5 @@
-import { Component } from "../Components";
-import { Vector2 } from "../utils/Vector";
+import { Component } from "./Component";
+import { Vector2 } from "./utils/Vector";
 
 export abstract class GameObject {
   public components: Component[] = [];

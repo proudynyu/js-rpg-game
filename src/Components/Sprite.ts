@@ -1,5 +1,5 @@
+import { Component } from "../Component";
 import { Vector2 } from "@utils";
-import { Component } from ".";
 
 export class Sprite extends Component {
   private _image: HTMLImageElement;

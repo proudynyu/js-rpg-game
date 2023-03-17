@@ -1,5 +1,5 @@
 import { keyboardEvents } from "@events";
-import { Component } from "@components";
+import { Component } from "../Component";
 import { Vector2 } from "@utils";
 
 export class Movement extends Component {

@@ -1,4 +1,4 @@
-import { GameObject } from '../Entities/GameObject'
+import { GameObject } from './GameObject'
 
 export abstract class Component {
   public gameObject: GameObject | null = null;
