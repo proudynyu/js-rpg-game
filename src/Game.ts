@@ -1,6 +1,5 @@
 import { Config } from "./Config";
-
-import { GameObject } from "@entities";
+import { GameObject } from "./GameObject";
 
 export class Game {
   private active: boolean = false;

@@ -12,9 +12,9 @@ export class Movement extends Component {
   public init() {}
 
   public update() {
-    if (this._keys?.a.pressed) this.position.vector2d.x += -this.speed;
-    else if (this._keys?.d.pressed) this.position.vector2d.x += this.speed;
-    else if (this._keys?.s.pressed) this.position.vector2d.y += this.speed;
-    else if (this._keys?.w.pressed) this.position.vector2d.y += -this.speed;
+    if (this._keys?.a.pressed) this.position.x += -this.speed;
+    else if (this._keys?.d.pressed) this.position.x += this.speed;
+    else if (this._keys?.s.pressed) this.position.y += this.speed;
+    else if (this._keys?.w.pressed) this.position.y += -this.speed;
   }
 }

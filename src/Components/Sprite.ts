@@ -24,8 +24,8 @@ export class Sprite extends Component {
     this._image.onload = () => {
       this.ctx.drawImage(
         this._image,
-        this.position.vector2d.x,
-        this.position.vector2d.y
+        this.position.x,
+        this.position.y
       );
     };
   }
@@ -33,8 +33,8 @@ export class Sprite extends Component {
   public update() {
     this.ctx.drawImage(
       this._image,
-      this.position.vector2d.x,
-      this.position.vector2d.y
+      this.position.x,
+      this.position.y
     );
   }
 }

@@ -2,13 +2,16 @@ import { Component } from "./Component";
 import { Vector2 } from "./utils/Vector";
 
 export abstract class GameObject {
+  protected ctx: CanvasRenderingContext2D
   public components: Component[] = [];
 
   constructor(
     private _position: Vector2,
     private _speed: number = 2,
     private _direction: Vector2 = new Vector2(0, 0)
-  ) {}
+  ) {
+    this.ctx = window.context
+  }
 
   public getComponent<T extends Component>(component: T): T | undefined {
     for (const ClassComponent of this.components) {

@@ -2,8 +2,6 @@ import { GameObject } from "../../GameObject";
 import { Vector2 } from "@utils";
 
 export class Rectangle extends GameObject {
-  private ctx: CanvasRenderingContext2D;
-
   constructor(
     position: Vector2 = new Vector2(0, 0),
     private width: number,
@@ -11,7 +9,6 @@ export class Rectangle extends GameObject {
     private color: string = "#fff"
   ) {
     super(position);
-    this.ctx = window.context;
   }
 
   public OnStart(): void {
@@ -19,8 +16,8 @@ export class Rectangle extends GameObject {
 
     this.ctx.fillStyle = this.color;
     this.ctx.fillRect(
-      this.position.vector2d.x,
-      this.position.vector2d.y,
+      this.position.x,
+      this.position.y,
       this.width,
       this.heigth
     );
@@ -31,8 +28,8 @@ export class Rectangle extends GameObject {
 
     this.ctx.fillStyle = this.color;
     this.ctx.fillRect(
-      this.position.vector2d.x,
-      this.position.vector2d.y,
+      this.position.x,
+      this.position.y,
       this.width,
       this.heigth
     );
