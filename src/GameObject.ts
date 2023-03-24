@@ -2,7 +2,7 @@ import { Component } from "./Component";
 import { Vector2 } from "./utils/Vector";
 
 export abstract class GameObject {
-  protected ctx: CanvasRenderingContext2D
+  protected ctx: CanvasRenderingContext2D;
   public components: Component[] = [];
 
   constructor(
@@ -10,16 +10,17 @@ export abstract class GameObject {
     private _speed: number = 2,
     private _direction: Vector2 = new Vector2(0, 0)
   ) {
-    this.ctx = window.context
+    this.ctx = window.context;
   }
 
-  public getComponent<T extends Component>(component: T): T | undefined {
-    for (const ClassComponent of this.components) {
-      if (component === ClassComponent) {
-        return component;
-      }
-    }
-    return undefined;
+  public getComponent<T extends Component>(
+    classType: new () => T
+  ): T | undefined {
+    return (
+      (this.components.find(
+        (component) => component.constructor === classType
+      ) as T) ?? undefined
+    );
   }
 
   public addComponent<T extends Component>(component: T): void {

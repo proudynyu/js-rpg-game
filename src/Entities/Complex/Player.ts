@@ -7,7 +7,10 @@ export class Player extends GameObject {
   }
 
   public OnStart() {
-    this.components.forEach((component) => component.init());
+    this.components.forEach((component) => {
+      component.gameObject = this;
+      component.init();
+    });
   }
 
   public OnUpdate() {

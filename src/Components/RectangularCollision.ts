@@ -38,23 +38,33 @@ export class RectangularCollision extends Component {
     );
   }
 
-  public init(): void {}
+  public init(): void {
+    RectangularCollision.collisions.push(this);
+  }
 
   public update(): void {
     if (this.gameObject) {
-      this.position = this.gameObject.position
+      this.position = this.gameObject.position;
     }
     if (this.showCollision) {
       this.draw();
+    }
+
+    for (let rect of RectangularCollision.collisions) {
+      if (rect !== this) {
+        if (this.isIntersecting(rect)) {
+          this.colliding = true;
+        }
+      }
     }
   }
 
   public isIntersecting(rect: RectangularCollision): boolean {
     return (
-      this.position.x >= rect.position.x + rect.width &&
-      this.position.x + this.width <= rect.position.x &&
+      this.position.x <= rect.position.x + rect.width &&
+      this.position.x + this.width >= rect.position.x &&
       this.position.y + this.height >= rect.position.y &&
-      this.position.y >= rect.position.y + rect.height
+      this.position.y <= rect.position.y + rect.height
     );
   }
 }

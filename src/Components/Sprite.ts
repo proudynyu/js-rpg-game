@@ -20,7 +20,6 @@ export class Sprite extends Component {
   }
 
   public init(): void {
-    console.log({ pos: this.position });
     this._image.onload = () => {
       this.ctx.drawImage(
         this._image,
