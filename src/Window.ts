@@ -6,13 +6,13 @@ export class Window {
   private title: string;
   private spriteSize: number;
 
-  public static window: Window | null = null;
+  public static instance: Window | null = null;
 
   public static get() {
-    if (!Window.window) {
-      Window.window = new Window();
+    if (!Window.instance) {
+      Window.instance = new Window();
     }
-    return Window.window;
+    return Window.instance;
   }
 
   private constructor() {

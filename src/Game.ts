@@ -6,7 +6,16 @@ export class Game {
   private gameObjects: GameObject[] = [];
   private ctx: CanvasRenderingContext2D
 
-  constructor(
+  public static instance: Game | null = null;
+
+  public static get(windowInstance: Window) {
+    if (!Game.instance) {
+      Game.instance = new Game(windowInstance)
+    }
+    return Game.instance;
+  }
+
+  private constructor(
     private windowInstance: Window,
   ) {
     this.ctx = window.context
