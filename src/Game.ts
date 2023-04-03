@@ -1,5 +1,5 @@
-import { Config } from "./Config";
 import { GameObject } from "./GameObject";
+import { Window } from './Window'
 
 export class Game {
   private active: boolean = false;
@@ -7,8 +7,7 @@ export class Game {
   private ctx: CanvasRenderingContext2D
 
   constructor(
-    private config: Config,
-    private canvas: HTMLCanvasElement
+    private windowInstance: Window,
   ) {
     this.ctx = window.context
   }
@@ -33,7 +32,7 @@ export class Game {
   }
 
   private render(): void {
-    this.ctx.clearRect(0, 0, this.config.screenWidth, this.config.screenHeight);
+    this.ctx.clearRect(0, 0, this.windowInstance.screenWidth, this.windowInstance.screenHeight);
 
     this.handleEvents();
 
@@ -47,8 +46,6 @@ export class Game {
 
   public init(): void {
     console.debug("game initializing...");
-    this.canvas.width = this.config.screenWidth;
-    this.canvas.height = this.config.screenHeight;
 
     this.gameObjects.forEach((gameObject) => {
       gameObject.OnStart();
