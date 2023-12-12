@@ -6,18 +6,9 @@ export class Window {
   private title: string;
   private spriteSize: number;
 
-  public static instance: Window | null = null;
-
-  public static get() {
-    if (!Window.instance) {
-      Window.instance = new Window();
-    }
-    return Window.instance;
-  }
-
-  private constructor() {
-    this.height = 1024;
-    this.width = 576;
+  constructor() {
+    this.height = 576;
+    this.width = 1024;
     this.title = "js game";
     this.spriteSize = 32;
   }
